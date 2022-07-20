@@ -1,10 +1,12 @@
-# Choice-experiment
+#Food Policy - meat alternatives - Choice experiment
 
-1. CE_data.dta and data_reorganize.do
-CE_data.dta is the raw data for the choice experiment and data_reorganize.do expands the data for Nlogit model.
+Please cite as "Ortega, D. L., Sun, J., & Lin, W. (2022). Identity labels as an instrument to reduce meat demand and encourage consumption of plant based and cultured meat alternatives in China. Food Policy, 111, 102307."
 
-2. choice_experiment for NLOGIT.lpj
-code for NLOGIT model
+1. Choice_Data_NLOGIT.lpj and Code for Table 3&4.lim
+Choice_Data_NLOGIT.lpj is the reshaped data for estimating the RPL model. Running Code for Table 3&4.lim on Choice_Data_NLOGIT.lpj could replicate the Table 3&4.
 
-3. CE_summary.data and CE_summary.do
-they are data and do.file for summary statistic analysis 
+2. Choice_Data_Stata.dta
+Choice_Data_Stata.dta is same as Choice_Data_NLOGIT.lpj, but in Stata file. It is easier to read respondents' original response id, which is a string variable.
+
+3. WTP_Analysis_Data.data and Code for Tables 1-2 & 5-6.do
+Running Code for Tables 1-2 & 5-6.do on WTP_Analysis_Data.data could replicate Table 1, 2, 5, 6. 
