@@ -1,0 +1,57 @@
+*use: Choice_Data_NLOGIT.lpj
+
+Sample; all$
+
+**** Reject 1-5 depending on the treatment to be estimated (treat 1= control; 2= animal welfare; 3= Environment; 4= Health; 5= Rest/FAFH)
+reject; treat=1$
+reject; treat=2$
+reject; treat=3$
+reject; treat=4$
+reject; treat=5$
+
+
+********************************************** 
+*                  Table 3                   *
+*           RPL estimates by treatment       *
+*                                            *
+**********************************************
+
+RPLOGIT
+    ;Lhs=choice;Choices=Pork, Tofu, Plant, Lab, None
+        ;Fcn=bpork(n),btofu(n), bplant(n), blab(n), bprice(o)
+        ;RPL;Halton;Pts=1000; Pds=9;
+	  ;Checkdata
+        ;parameters
+        ;Model: U(Pork)=bprice*price_ac+bpork*pork/
+		    U(Tofu)=bprice*price_ac+btofu*tofu/
+		    U(Plant)= bprice*price_ac+bplant*plant/
+		    U(Lab)= bprice*price_ac+blab*lab/
+                U(NONE)=0;tlf=0.0001; tlb=0.0001; tlg=0.0001$
+
+
+*********************************************** 
+*                  Table 4                    *
+*   WTP and relative valuations by treatment  *
+*                                             *
+***********************************************
+
+Matrix
+    ;v_hat = part(varb,1,5,1,5)
+    ;b_hat= part(b,1,5,1,1)
+    $
+WALD ; Labels = a1,a2,a3,a4,a5
+    ; Start  = b_hat
+    ; Var    = v_hat
+    ; Fn1    = (-1*a1/a5)
+    ; Fn2    = (-1*a2/a5)
+    ; Fn3    = (-1*a3/a5)
+    ; Fn4    = (-1*a4/a5)
+    ; Fn5    = (-1*(a2-a1)/a5)
+    ; Fn6    = (-1*(a3-a1)/a5)
+    ; Fn7    = (-1*(a4-a1)/a5)
+    ;K&R; Pts=1000$
+
+
+
+
+
